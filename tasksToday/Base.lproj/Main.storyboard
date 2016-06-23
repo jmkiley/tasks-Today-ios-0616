@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="39S-gd-eyQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="39S-gd-eyQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,13 +18,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nP-xd-5Tw">
-                                <rect key="frame" x="20" y="110" width="280" height="123"/>
+                                <rect key="frame" x="20" y="109" width="280" height="123"/>
                                 <accessibility key="accessibilityConfiguration" label="next year button"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
                                 <state key="normal" title="Next Year">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="setNextYearButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="orG-0B-tiy"/>
                                     <segue destination="08q-Pe-HTm" kind="push" identifier="nextYear" id="nYA-U4-dJg"/>
                                 </connections>
                             </button>
@@ -36,6 +37,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="setLastYearButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RqU-jB-jz8"/>
                                     <segue destination="08q-Pe-HTm" kind="push" identifier="lastYear" id="I6L-VG-azD"/>
                                 </connections>
                             </button>
@@ -46,15 +48,19 @@
                         </accessibility>
                     </view>
                     <navigationItem key="navigationItem" id="Idn-DG-Gz4"/>
+                    <connections>
+                        <outlet property="lastYearButton" destination="0x2-P9-gUD" id="Tfa-6Q-In2"/>
+                        <outlet property="nextYearButton" destination="5nP-xd-5Tw" id="eVX-VQ-wac"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="778" y="83"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Detail Manager-->
         <scene sceneID="npS-XR-zte">
             <objects>
-                <viewController id="08q-Pe-HTm" sceneMemberID="viewController">
+                <viewController id="08q-Pe-HTm" customClass="FISEventDetailManager" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sly-me-kIz"/>
                         <viewControllerLayoutGuide type="bottom" id="BwX-3J-MgW"/>
@@ -63,7 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="I am a text view :D" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ7-Oe-1dd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="!N" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ7-Oe-1dd">
                                 <rect key="frame" x="42" y="75" width="236" height="417"/>
                                 <color key="backgroundColor" red="0.67006912796388041" green="0.26397606863341982" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="events list"/>
@@ -78,6 +84,9 @@
                         </accessibility>
                     </view>
                     <navigationItem key="navigationItem" id="jML-hK-JxE"/>
+                    <connections>
+                        <outlet property="allTheEvents" destination="MJ7-Oe-1dd" id="pqZ-Vg-6tC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNZ-sn-vCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,12 +111,7 @@
             <point key="canvasLocation" x="598" y="751"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nYA-U4-dJg"/>
+        <segue reference="I6L-VG-azD"/>
     </inferredMetricsTieBreakers>
 </document>
